@@ -19,7 +19,7 @@ services:
       ENV: "${ENV:-development}"
     depends_on:
       - db
-    command: /startup.sh
+    command: /startup_dev.sh
     networks:
       local:
         aliases:
