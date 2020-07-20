@@ -7,7 +7,7 @@ services:
     image: godev
     container_name: godev
     volumes:
-      - ./app:/go/src/sandbox:cached
+      - ./app:/go/src/sandbox
     ports:
       - 18080:8080
       - 20023:20022
@@ -19,6 +19,7 @@ services:
       ENV: "${ENV:-development}"
     depends_on:
       - db
+    command: /startup.sh
     networks:
       local:
         aliases:
