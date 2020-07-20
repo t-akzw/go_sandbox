@@ -1,0 +1,46 @@
+version: '3.3'
+services:
+  godev:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    image: godev
+    container_name: godev
+    volumes:
+      - ./app:/go/src/sandbox
+    ports:
+      - 18080:8080
+      - 20023:20022
+    tty: true
+    env_file:
+      - .env.local
+    environment:
+      APP_PORT: 8080
+      ENV: "${ENV:-development}"
+    depends_on:
+      - db
+    command: /startup_dev.sh
+    networks:
+      local:
+        aliases:
+          - godev.local
+  db:
+    image: postgres:10.7
+    volumes:
+      - ./postgres:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: sandbox
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "15432:5432"
+    networks:
+      local:
+networks:
+  local:
+    driver: bridge
+    ipam:
+     driver: default
+     config:
+       - subnet: 172.32.0.0/24
