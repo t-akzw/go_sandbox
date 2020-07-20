@@ -9,4 +9,7 @@
 docker build -t goapp .
 docker run -p 28080:8080 -d --name goapp goapp
 curl localhost:28080/ping
+
+# 落とし方
+docker stop down goapp
 ```

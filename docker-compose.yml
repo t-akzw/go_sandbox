@@ -10,6 +10,7 @@ services:
       - ./app:/go/src/sandbox:cached
     ports:
       - 18080:8080
+      - 20023:20022
     tty: true
     env_file:
       - .env.local
@@ -41,4 +42,4 @@ networks:
     ipam:
      driver: default
      config:
-       - subnet: 172.31.0.0/24
+       - subnet: 172.32.0.0/24
