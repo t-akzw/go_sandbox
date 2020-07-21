@@ -10,7 +10,6 @@ services:
       - ./app:/go/src/sandbox
     ports:
       - 18080:8080
-      - 20023:20022
     tty: true
     env_file:
       - .env.local
