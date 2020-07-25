@@ -1,15 +1,16 @@
-version: '3.3'
+version: '3.7'
 services:
   godev:
     build:
       context: ./app
       dockerfile: Dockerfile
-    image: godev
+      target: dev
     container_name: godev
     volumes:
-      - ./app:/go/src/sandbox
+      - ./app/src:/go/src/sandbox
     ports:
-      - 18080:8080
+      - 28080:8080
+      - 2345:2345
     tty: true
     env_file:
       - .env.local

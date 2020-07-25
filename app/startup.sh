@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-/app/app
+/dist/app

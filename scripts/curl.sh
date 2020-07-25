@@ -1,3 +1,3 @@
 #!/bin/sh
 
-curl localhost:18080/ping
+curl localhost:28080/ping

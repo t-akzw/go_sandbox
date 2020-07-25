@@ -1,2 +1,5 @@
 postgres
 tmp
+bin
+pkg
+.vscode
