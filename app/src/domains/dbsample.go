@@ -1,15 +1,15 @@
 package domains
 
 import (
-	"fmt"
 	"os"
 
+	"local.packages/models"
+
 	"github.com/jinzhu/gorm"
-	"github.com/t-akzw/go_sandbox/models"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
-func main() {
-	fmt.Println("hogehoge")
+func FooSample() {
 	host := os.Getenv("DB_HOST")
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
@@ -21,12 +21,12 @@ func main() {
 	defer db.Close()
 
 	// スキーマのマイグレーション
-	var model models.Model
-	db.AutoMigrate(model)
+	var models models.Model
+	db.AutoMigrate(&models)
 
 	// Create
-	db.Create(model{Code: "L1212", Price: 1000})
+	//db.Create(&models{Code: "L1212", Price: 1000})
 
-	db.First(&model, 1)
-	fmt.Printf("model %#v\n", model.id)
+	db.First(&models, 1)
+	//fmt.Printf("model %#v\n", &models.id)
 }

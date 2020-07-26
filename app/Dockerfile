@@ -1,8 +1,7 @@
 FROM golang:1.14.6 as build
 
-WORKDIR $GOPATH/src/sandbox
+WORKDIR $GOPATH/src/github.com/t-akzw/go_sandbox
 COPY ./src .
-RUN pwd && ls
 RUN mkdir -p /dist
 RUN go install -v
 RUN go build -o /dist/server .
@@ -14,7 +13,7 @@ ENV TZ=Asia/Tokyo
 WORKDIR $GOPATH
 RUN go get -v -u github.com/go-delve/delve/cmd/dlv
 
-WORKDIR $GOPATH/src/sandbox
+WORKDIR $GOPATH/src/github.com/t-akzw/go_sandbox
 RUN mkdir -p /dist
 RUN apt-get update && \
     apt-get install -y build-essential libssl-dev vim openssh-server dnsutils
