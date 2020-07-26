@@ -1,4 +1,5 @@
 postgres
+postgres-build
 tmp
 bin
 pkg
