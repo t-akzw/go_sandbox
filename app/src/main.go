@@ -10,7 +10,7 @@ func main() {
 	r.GET("/ping", func(c *gin.Context) {
 		domains.FooSample()
 		c.JSON(200, gin.H{
-			"message": "pong1",
+			"message": "pong",
 		})
 	})
 	r.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")

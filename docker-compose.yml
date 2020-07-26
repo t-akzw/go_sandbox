@@ -1,11 +1,11 @@
 version: '3.7'
 services:
-  godev:
+  gosandbox:
     build:
       context: ./app
       dockerfile: Dockerfile
       target: dev
-    container_name: godev
+    container_name: gosandbox
     volumes:
       - ./app/src:/go/src/github.com/t-akzw/go_sandbox
     ports:
@@ -23,7 +23,7 @@ services:
     networks:
       local:
         aliases:
-          - godev.local
+          - gosandbox.local
   db:
     image: postgres:10.7
     volumes:
@@ -42,4 +42,4 @@ networks:
     ipam:
      driver: default
      config:
-       - subnet: 172.32.0.0/24
+       - subnet: 172.34.0.0/24
