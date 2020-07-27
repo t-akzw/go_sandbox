@@ -1,6 +1,7 @@
 FROM golang:1.14.6 as build
 
 WORKDIR $GOPATH/src/github.com/t-akzw/go_sandbox
+# COPYする対象を絞る、不要なビルドが走らないようにする
 COPY ./src .
 RUN mkdir -p /dist
 RUN go install -v
@@ -11,7 +12,8 @@ FROM golang:1.14.6 as dev
 
 ENV TZ=Asia/Tokyo
 WORKDIR $GOPATH
-RUN go get -v -u github.com/go-delve/delve/cmd/dlv
+RUN go get -v -u github.com/go-delve/delve/cmd/dlv \
+  && go get -v github.com/rubenv/sql-migrate/...
 
 WORKDIR $GOPATH/src/github.com/t-akzw/go_sandbox
 RUN mkdir -p /dist
