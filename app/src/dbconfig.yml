@@ -1,0 +1,6 @@
+# sql-migrate db settings.
+development:
+    dialect: postgres
+    datasource: dbname=${DB_NAME} host=${DB_HOST} user=${DB_USER} password=${DB_PASSWORD} port=5432 sslmode=disable
+    dir: db/migrations
+    table: migrations
